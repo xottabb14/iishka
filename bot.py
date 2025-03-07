@@ -691,6 +691,12 @@ def t_timer():
 #_______________________________________________РАЗГОВОРНЫЕ ФУНКЦИИ_______________________________
 #функция добавления ответа в базу ответов бота
 def add_ans(message):
+	try:
+		message_text = gpt_message(message.text)
+		bot.send_message(message.chat.id,message_text,reply_to_message_id=message.message_id)
+	except:
+		pass
+	'''
 	ss = len(re.findall(r"[\n']+?", open(wordsfile, "r", encoding = "utf-8").read())) #количество строк в начале обработки файла
 	words_file = open(wordsfile, "a", encoding = "utf-8") #открываем файл в режиме добавления в конец файла
 	cl_message = clean_iishka (message.text)
@@ -709,6 +715,7 @@ def add_ans(message):
 		del_str (messa_clean,'')#('#'+message.text,'')
 	else:
 		pass
+	'''
 
 # функция записи ответа на фразу в файл
 def obrab(message):
@@ -794,12 +801,10 @@ def word_list(message):
 		n += 1
 
 	if io == 1:
-		'''not_ans = (message.from_user.first_name+', в моей базе нет ответа. Вы можете его добавить. Для этого напишите мне точную фразу, которой я должен был Вам ответить.')#message.from_user.first_name - вывод первого имени пользователя в телеграме
+		not_ans = (message.from_user.first_name+', в моей базе нет ответа. Вы можете его добавить. Для этого напишите мне точную фразу, которой я должен был Вам ответить.')#message.from_user.first_name - вывод первого имени пользователя в телеграме
 		bot.send_message(message.chat.id, not_ans)
 		add_ans(message) #добавляем функцию базы
- 		'''
-		message_text = gpt_message(message.text)
-		bot.send_message(message.chat.id,message_text,reply_to_message_id=message.message_id)
+ 		
 		io=0
 	else:
 		pass
