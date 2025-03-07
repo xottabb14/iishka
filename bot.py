@@ -801,8 +801,8 @@ def word_list(message):
 		n += 1
 
 	if io == 1:
-		not_ans = (message.from_user.first_name+', в моей базе нет ответа. Вы можете его добавить. Для этого напишите мне точную фразу, которой я должен был Вам ответить.')#message.from_user.first_name - вывод первого имени пользователя в телеграме
-		bot.send_message(message.chat.id, not_ans)
+		#not_ans = (message.from_user.first_name+', в моей базе нет ответа. Вы можете его добавить. Для этого напишите мне точную фразу, которой я должен был Вам ответить.')#message.from_user.first_name - вывод первого имени пользователя в телеграме
+		#bot.send_message(message.chat.id, not_ans)
 		add_ans(message) #добавляем функцию базы
  		
 		io=0
